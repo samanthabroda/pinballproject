@@ -1,2 +1,0 @@
-# pinballproject
-Game Programming Assignment
