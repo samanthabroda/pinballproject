@@ -8,6 +8,7 @@ public class SpringScript : MonoBehaviour {
     public float maxPower = 1000f;
     public Slider powerSlider;
     private List<Rigidbody> ballList;
+    private int balls = 3;
     private bool flage=false;
 
     // Use this for initialization
@@ -15,14 +16,12 @@ public class SpringScript : MonoBehaviour {
         powerSlider.minValue = 1f;
         powerSlider.maxValue = maxPower;
         ballList = new List<Rigidbody>();
-
-
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(flage) powerSlider.value = power;
-        if(ballList.Count>0){
+        if(ballList.Count>=0){
            
             if(Input.GetKey(KeyCode.Space)){
                 if (power < maxPower)
@@ -41,10 +40,12 @@ public class SpringScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Ball")){
+        if(other.gameObject.CompareTag("Ball") && balls > 0){
                ballList.Add(other.gameObject.GetComponent<Rigidbody>());
-            flage = true;
-        }
+               balls = balls - 1;
+                flage = true;
+
+        } 
     }
     private void OnTriggerExit(Collider other)
     {
@@ -54,3 +55,5 @@ public class SpringScript : MonoBehaviour {
         flage = false;
     }
 }
+
+
