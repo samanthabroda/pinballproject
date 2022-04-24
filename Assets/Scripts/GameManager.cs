@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class bumperScoreValue : MonoBehaviour
+using TMPro;
+public class GameManager : MonoBehaviour
 {
-    public int scoreValue = 100;
+    public TMP_Text scoreText;
+    public int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,18 @@ public class bumperScoreValue : MonoBehaviour
     void Update()
     {
         
-        
     }
 
-    //returns value of each bumber
-    public int GetScoleValue()
+    private void FixedUpdate()
     {
-        return scoreValue;
+        scoreText.SetText("Current Score:" + score);
     }
+
+}
+
+public enum GameState
+{
+    Idle,
+    Playing,
+    GameOVer
 }
