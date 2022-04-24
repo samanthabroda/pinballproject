@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - currentScore
+  - Collider
   layers:
   - Default
   - TransparentFX

@@ -16,4 +16,15 @@ public class BallBehavior : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Collider"))
+        {
+            GameManager.instance.score += other.gameObject.GetComponent<bumperScoreValue>().scoreValue;
+            other.gameObject.SetActive(false);
+
+
+        }
+    }
 }
